@@ -1,0 +1,2 @@
+total_tickets,resolved_tickets,open_backlog,resolution_rate_pct,sla_compliance_pct,avg_resolution_hours,avg_csat,reopen_rate_pct
+420,338,82,80.5,87.9,17.52,4.17,7.4

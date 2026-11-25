@@ -1,0 +1,47 @@
+Total Tickets =
+COUNTROWS(Tickets)
+
+Resolved Tickets =
+CALCULATE(
+    [Total Tickets],
+    Tickets[status] IN {"Resolved", "Closed"}
+)
+
+Open Backlog =
+CALCULATE(
+    [Total Tickets],
+    Tickets[status] IN {"Open", "In Progress"}
+)
+
+Resolution Rate % =
+DIVIDE([Resolved Tickets], [Total Tickets])
+
+SLA Met Tickets =
+CALCULATE(
+    [Resolved Tickets],
+    Tickets[sla_met] = "Yes"
+)
+
+SLA Compliance % =
+DIVIDE([SLA Met Tickets], [Resolved Tickets])
+
+Average Resolution Hours =
+DIVIDE(
+    AVERAGE(Tickets[resolution_minutes]),
+    60
+)
+
+Average First Response Minutes =
+AVERAGE(Tickets[first_response_minutes])
+
+Average CSAT =
+AVERAGE(Tickets[satisfaction_score])
+
+Reopened Tickets =
+CALCULATE(
+    [Resolved Tickets],
+    Tickets[reopened] = "Yes"
+)
+
+Reopen Rate % =
+DIVIDE([Reopened Tickets], [Resolved Tickets])
